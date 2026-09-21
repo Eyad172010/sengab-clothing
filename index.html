@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>السنجاب للملابس</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background: #080a0f;
+            color: #ffffff;
+            line-height: 1.7;
+        }
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+
+            background: rgba(8, 10, 15, 0.92);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #1d2430;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+
+            min-height: 75px;
+            padding: 10px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .cart-btn {
+            border: 1px solid #263142;
+            background: #111722;
+            color: white;
+
+            padding: 10px 16px;
+            border-radius: 12px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: #172131;
+        }
+
+        .cart-count {
+            display: inline-flex;
+
+            min-width: 22px;
+            height: 22px;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-right: 5px;
+
+            border-radius: 50%;
+            background: #2563eb;
+
+            font-size: 12px;
+        }
+
+        .menu-btn {
+            display: none;
+
+            border: 0;
+            background: transparent;
+            color: white;
+
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 720px;
+
+            padding: 150px 20px 90px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at 20% 30%,
+                    rgba(37, 99, 235, 0.16),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(30, 64, 175, 0.12),
+                    transparent 35%
+                );
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero-small {
+            color: #60a5fa;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            max-width: 700px;
+
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.1;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #3b82f6;
+        }
+
+        .hero p {
+            max-width: 620px;
+
+            color: #94a3b8;
+            font-size: 18px;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            border-radius: 13px;
+
+            padding: 13px 23px;
+
+            cursor: pointer;
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            border: 1px solid #2563eb;
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary-btn {
+            border: 1px solid #263142;
+            background: #111722;
+            color: white;
+        }
+
+        .secondary-btn:hover {
+            background: #172131;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 20px;
+        }
+
+        .section-title {
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: #3b82f6;
+            font-size: 14px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-top: 5px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .category-card {
+            min-height: 170px;
+
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            border: 1px solid #202938;
+            border-radius: 20px;
+
+            background: #0d1119;
+
+            transition: 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: #31578e;
+        }
+
+        .category-card h3 {
+            font-size: 23px;
+            margin-bottom: 5px;
+        }
+
+        .category-card p {
+            color: #64748b;
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            border: 1px solid #263142;
+            background: #0d1119;
+            color: #94a3b8;
+
+            padding: 9px 17px;
+            border-radius: 10px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            overflow: hidden;
+
+            border: 1px solid #202938;
+            border-radius: 20px;
+
+            background: #0d1119;
+
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            border-color: #31578e;
+        }
+
+        .product-image {
+            position: relative;
+            height: 380px;
+
+            background: #111722;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+
+            padding: 5px 10px;
+
+            background: #2563eb;
+            color: white;
+
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-category {
+            color: #60a5fa;
+            font-size: 12px;
+        }
+
+        .product-info h3 {
+            font-size: 22px;
+            margin: 4px 0;
+        }
+
+        .product-description {
+            color: #64748b;
+            font-size: 14px;
+
+            min-height: 48px;
+        }
+
+        .product-bottom {
+            margin-top: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .price {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            border: 0;
+            background: #2563eb;
+            color: white;
+
+            padding: 10px 15px;
+            border-radius: 10px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-box {
+            padding: 35px;
+
+            border: 1px solid #202938;
+            border-radius: 20px;
+
+            background: #0d1119;
+        }
+
+        .about-box h3 {
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            color: #94a3b8;
+        }
+
+        .features {
+            display: grid;
+            gap: 15px;
+        }
+
+        .feature {
+            padding: 20px;
+
+            border: 1px solid #202938;
+            border-radius: 15px;
+
+            background: #0d1119;
+        }
+
+        .feature h4 {
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            padding: 40px;
+
+            border: 1px solid #202938;
+            border-radius: 20px;
+
+            background: #0d1119;
+
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #1d2430;
+            padding: 30px 20px;
+
+            text-align: center;
+            color: #64748b;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           MODALS
+        ========================= */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+
+            z-index: 2000;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+
+            padding: 25px;
+
+            border: 1px solid #263142;
+            border-radius: 20px;
+
+            background: #0d1119;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 25px;
+        }
+
+        .close-btn {
+            border: 0;
+            background: transparent;
+            color: #94a3b8;
+
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           CART
+        ========================= */
+
+        .cart-items {
+            display: grid;
+            gap: 12px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 12px;
+
+            border: 1px solid #202938;
+            border-radius: 12px;
+
+            background: #111722;
+        }
+
+        .cart-item img {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 9px;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            font-size: 15px;
+        }
+
+        .cart-item-info p {
+            color: #60a5fa;
+            font-size: 13px;
+        }
+
+        .remove-btn {
+            border: 0;
+            background: transparent;
+            color: #ef4444;
+
+            cursor: pointer;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding-top: 20px;
+
+            border-top: 1px solid #202938;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #64748b;
+            padding: 30px 0;
+        }
+
+        /* =========================
+           CHECKOUT
+        ========================= */
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            border: 1px solid #263142;
+            border-radius: 10px;
+
+            padding: 12px;
+
+            background: #111722;
+            color: white;
+
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .checkout-summary {
+            margin: 20px 0;
+            padding: 15px;
+
+            border: 1px solid #202938;
+            border-radius: 12px;
+
+            background: #111722;
+        }
+
+        .checkout-summary-row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 5px 0;
+
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .checkout-total {
+            margin-top: 10px;
+            padding-top: 10px;
+
+            border-top: 1px solid #263142;
+
+            display: flex;
+            justify-content: space-between;
+
+            font-weight: bold;
+        }
+
+        .whatsapp-btn {
+            width: 100%;
+
+            border: 0;
+            background: #16a34a;
+            color: white;
+
+            padding: 14px;
+            border-radius: 12px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #15803d;
+        }
+
+        /* =========================
+           FLOATING WHATSAPP
+        ========================= */
+
+        .floating-whatsapp {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+
+            z-index: 1500;
+
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #16a34a;
+            color: white;
+
+            font-size: 25px;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .nav {
+                min-height: 65px;
+            }
+
+            .logo img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+
+                top: 65px;
+                right: 15px;
+                left: 15px;
+
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+
+                padding: 15px;
+
+                border: 1px solid #202938;
+                border-radius: 15px;
+
+                background: #0d1119;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 8px;
+            }
+
+            .cart-btn {
+                width: 100%;
+            }
+
+            .hero {
+                min-height: 650px;
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 65px 15px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .categories,
+            .products,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 330px;
+            }
+
+            .about {
+                gap: 20px;
+            }
+
+            .product-bottom {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .add-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="nav">
+
+            <a href="#home" class="logo">
+                <img src="images/logo.png" alt="السنجاب للملابس">
+            </a>
+
+            <button class="menu-btn" onclick="toggleMenu()">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="#home" onclick="closeMenu()">
+                    الرئيسية
+                </a>
+
+                <a href="#products" onclick="closeMenu()">
+                    المنتجات
+                </a>
+
+                <a href="#about" onclick="closeMenu()">
+                    عن السنجاب
+                </a>
+
+                <a href="#contact" onclick="closeMenu()">
+                    تواصل معنا
+                </a>
+
+                <button class="cart-btn" onclick="openCart()">
+                    🛒 السلة
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                السنجاب للملابس
+            </div>
+
+            <h1>
+                ستايلك
+                <span>بطريقتك</span>
+            </h1>
+
+            <p>
+                اختار القطعة اللي تناسبك
+                واطلبها بسهولة من خلال واتساب
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#products" class="primary-btn">
+                    اكتشف المنتجات
+                </a>
+
+                <a href="#contact" class="secondary-btn">
+                    تواصل معنا
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <span>
+                الأقسام
+            </span>
+
+            <h2>
+                اختار ستايلك
+            </h2>
+
+        </div>
+
+        <div class="categories">
+
+            <div class="category-card">
+
+                <h3>
+                    تيشيرتات
+                </h3>
+
+                <p>
+                    تصميمات يومية وعصرية
+                </p>
+
+            </div>
+
+            <div class="category-card">
+
+                <h3>
+                    جاكيتات
+                </h3>
+
+                <p>
+                    قطع مميزة للوك مختلف
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================= -->
+
+    <section class="section" id="products">
+
+        <div class="section-title">
+
+            <span>
+                المنتجات
+            </span>
+
+            <h2>
+                اختار اللي يعجبك
+            </h2>
+
+            <p>
+                الأسعار والمعلومات الموجودة هنا تجريبية ويمكن تعديلها
+            </p>
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter-btn active"
+                onclick="filterProducts('all', this)"
+            >
+                الكل
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterProducts('shirts', this)"
+            >
+                تيشيرتات
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterProducts('jackets', this)"
+            >
+                جاكيتات
+            </button>
+
+        </div>
+
+
+        <div class="products" id="productsGrid">
+
+
+            <!-- PRODUCT 1 -->
+
+            <article
+                class="product"
+                data-category="shirts"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product1.jpg"
+                        alt="تيشيرت Premium"
+                    >
+
+                    <span class="product-badge">
+                        مميز
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        تيشيرتات
+                    </span>
+
+                    <h3>
+                        تيشيرت Premium
+                    </h3>
+
+                    <p class="product-description">
+                        تيشيرت بتصميم عصري مناسب للاستخدام اليومي
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            400 ج.م
+                        </span>
+
+                        <button
+                            class="add-btn"
+                            onclick="
+                                addToCart(
+                                    'تيشيرت Premium',
+                                    400,
+                                    'images/product1.jpg'
+                                )
+                            "
+                        >
+                            أضف للسلة
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 2 -->
+
+            <article
+                class="product"
+                data-category="jackets"
+            >
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product2.jpg"
+                        alt="جاكيت Bomber"
+                    >
+
+                    <span class="product-badge">
+                        جديد
+                    </span>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        جاكيتات
+                    </span>
+
+                    <h3>
+                        جاكيت Bomber
+                    </h3>
+
+                    <p class="product-description">
+                        جاكيت بومبر بتصميم عصري ومميز
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            750 ج.م
+                        </span>
+
+                        <button
+                            class="add-btn"
+                            onclick="
+                                addToCart(
+                                    'جاكيت Bomber',
+                                    750,
+                                    'images/product2.jpg'
+                                )
+                            "
+                        >
+                            أضف للسلة
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="section" id="about">
+
+        <div class="about">
+
+            <div class="about-box">
+
+                <h3>
+                    عن السنجاب للملابس
+                </h3>
+
+                <p>
+                    مكانك لاختيار الملابس اللي تناسب ستايلك
+                    مع تصميم بسيط وسهل يساعدك تشوف المنتجات
+                    وتطلبها بسرعة.
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <h4>
+                        👕 اختيارات مميزة
+                    </h4>
+
+                    <p>
+                        منتجات مختارة بعناية للستايل اليومي
+                    </p>
+
+                </div>
+
+                <div class="feature">
+
+                    <h4>
+                        📱 طلب سهل
+                    </h4>
+
+                    <p>
+                        اطلب مباشرة من خلال واتساب
+                    </p>
+
+                </div>
+
+                <div class="feature">
+
+                    <h4>
+                        🚚 توصيل
+                    </h4>
+
+                    <p>
+                        اكتب عنوانك وسيتم التواصل معك لتأكيد الطلب
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="section" id="contact">
+
+        <div class="contact-box">
+
+            <h2>
+                محتاج مساعدة؟
+            </h2>
+
+            <p>
+                تواصل مع السنجاب للملابس مباشرة على واتساب
+            </p>
+
+            <a
+                href="https://wa.me/201093058123"
+                target="_blank"
+                class="primary-btn"
+            >
+                تواصل على واتساب
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 السنجاب للملابس
+        <br>
+        جميع الحقوق محفوظة
+
+    </footer>
+
+
+    <!-- =========================
+         CART MODAL
+    ========================= -->
+
+    <div class="modal" id="cartModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2>
+                    سلة المشتريات
+                </h2>
+
+                <button
+                    class="close-btn"
+                    onclick="closeCart()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                class="cart-items"
+                id="cartItems"
+            ></div>
+
+
+            <div
+                class="cart-total"
+                id="cartTotal"
+                style="display:none;"
+            >
+
+                <strong>
+                    الإجمالي
+                </strong>
+
+                <strong id="totalPrice">
+                    0 ج.م
+                </strong>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                id="checkoutBtn"
+                onclick="openCheckout()"
+                style="
+                    width:100%;
+                    margin-top:20px;
+                    display:none;
+                "
+            >
+                إتمام الطلب
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CHECKOUT MODAL
+    ========================= -->
+
+    <div class="modal" id="checkoutModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2>
+                    بيانات الطلب
+                </h2>
+
+                <button
+                    class="close-btn"
+                    onclick="closeCheckout()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="checkout-summary">
+
+                <div id="checkoutProducts"></div>
+
+                <div class="checkout-total">
+
+                    <span>
+                        الإجمالي
+                    </span>
+
+                    <span id="checkoutTotal">
+                        0 ج.م
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    الاسم
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="اكتب اسمك"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رقم الهاتف
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="01xxxxxxxxx"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    عنوان التوصيل
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    placeholder="اكتب عنوان التوصيل بالتفصيل"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                class="whatsapp-btn"
+                onclick="sendOrderToWhatsApp()"
+            >
+                إرسال الطلب على واتساب
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FLOATING WHATSAPP
+    ========================= -->
+
+    <a
+        href="https://wa.me/201093058123"
+        target="_blank"
+        class="floating-whatsapp"
+        aria-label="واتساب"
+    >
+        ☎
+    </a>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           CART
+        ========================= */
+
+        let cart = [];
+
+
+        function addToCart(name, price, image) {
+
+            const existingProduct = cart.find(
+                item => item.name === name
+            );
+
+            if (existingProduct) {
+
+                existingProduct.quantity++;
+
+            } else {
+
+                cart.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+
+            }
+
+            updateCart();
+
+            openCart();
+        }
+
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            updateCart();
+        }
+
+
+        function updateCart() {
+
+            const cartCount = document.getElementById("cartCount");
+
+            const cartItems = document.getElementById("cartItems");
+
+            const cartTotal = document.getElementById("cartTotal");
+
+            const checkoutBtn = document.getElementById("checkoutBtn");
+
+            const totalPrice = document.getElementById("totalPrice");
+
+
+            let totalQuantity = 0;
+
+            let total = 0;
+
+
+            cart.forEach(item => {
+
+                totalQuantity += item.quantity;
+
+                total += item.price * item.quantity;
+
+            });
+
+
+            cartCount.textContent = totalQuantity;
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        السلة فاضية حالياً
+                    </div>
+                `;
+
+                cartTotal.style.display = "none";
+
+                checkoutBtn.style.display = "none";
+
+                return;
+            }
+
+
+            cartItems.innerHTML = cart.map(
+                (item, index) => `
+
+                    <div class="cart-item">
+
+                        <img
+                            src="${item.image}"
+                            alt="${item.name}"
+                        >
+
+                        <div class="cart-item-info">
+
+                            <h4>
+                                ${item.name}
+                            </h4>
+
+                            <p>
+                                ${item.price} ج.م × ${item.quantity}
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeFromCart(${index})"
+                        >
+                            حذف
+                        </button>
+
+                    </div>
+
+                `
+            ).join("");
+
+
+            totalPrice.textContent =
+                total.toLocaleString("ar-EG") + " ج.م";
+
+
+            cartTotal.style.display = "flex";
+
+            checkoutBtn.style.display = "block";
+        }
+
+
+        /* =========================
+           CART MODAL
+        ========================= */
+
+        function openCart() {
+
+            updateCart();
+
+            document
+                .getElementById("cartModal")
+                .classList.add("show");
+
+        }
+
+
+        function closeCart() {
+
+            document
+                .getElementById("cartModal")
+                .classList.remove("show");
+
+        }
+
+
+        /* =========================
+           CHECKOUT
+        ========================= */
+
+        function openCheckout() {
+
+            if (cart.length === 0) {
+
+                return;
+
+            }
+
+
+            let total = 0;
+
+
+            const productsHTML = cart.map(item => {
+
+                const itemTotal =
+                    item.price * item.quantity;
+
+                total += itemTotal;
+
+                return `
+
+                    <div class="checkout-summary-row">
+
+                        <span>
+                            ${item.name} × ${item.quantity}
+                        </span>
+
+                        <span>
+                            ${itemTotal} ج.م
+                        </span>
+
+                    </div>
+
+                `;
+
+            }).join("");
+
+
+            document.getElementById(
+                "checkoutProducts"
+            ).innerHTML = productsHTML;
+
+
+            document.getElementById(
+                "checkoutTotal"
+            ).textContent =
+                total.toLocaleString("ar-EG") + " ج.م";
+
+
+            closeCart();
+
+
+            document
+                .getElementById("checkoutModal")
+                .classList.add("show");
+
+        }
+
+
+        function closeCheckout() {
+
+            document
+                .getElementById("checkoutModal")
+                .classList.remove("show");
+
+        }
+
+
+        /* =========================
+           SEND ORDER TO WHATSAPP
+        ========================= */
+
+        function sendOrderToWhatsApp() {
+
+            const name =
+                document.getElementById(
+                    "customerName"
+                ).value.trim();
+
+
+            const phone =
+                document.getElementById(
+                    "customerPhone"
+                ).value.trim();
+
+
+            const address =
+                document.getElementById(
+                    "customerAddress"
+                ).value.trim();
+
+
+            if (!name || !phone || !address) {
+
+                alert(
+                    "من فضلك اكتب الاسم ورقم الهاتف والعنوان"
+                );
+
+                return;
+            }
+
+
+            let message =
+                "طلب جديد من موقع السنجاب للملابس\n\n";
+
+
+            message +=
+                "الاسم: " + name + "\n";
+
+            message +=
+                "رقم العميل: " + phone + "\n";
+
+            message +=
+                "العنوان: " + address + "\n\n";
+
+
+            message +=
+                "المنتجات:\n";
+
+
+            let total = 0;
+
+
+            cart.forEach(item => {
+
+                const itemTotal =
+                    item.price * item.quantity;
+
+                total += itemTotal;
+
+
+                message +=
+                    "- " +
+                    item.name +
+                    " × " +
+                    item.quantity +
+                    " = " +
+                    itemTotal +
+                    " ج.م\n";
+
+            });
+
+
+            message +=
+                "\nالإجمالي: " +
+                total +
+                " ج.م";
+
+
+            const whatsappNumber =
+                "201093058123";
+
+
+            const whatsappURL =
+                "https://wa.me/" +
+                whatsappNumber +
+                "?text=" +
+                encodeURIComponent(message);
+
+
+            window.open(
+                whatsappURL,
+                "_blank"
+            );
+
+        }
+
+
+        /* =========================
+           FILTER PRODUCTS
+        ========================= */
+
+        function filterProducts(category, button) {
+
+            const products =
+                document.querySelectorAll(
+                    ".product"
+                );
+
+
+            const buttons =
+                document.querySelectorAll(
+                    ".filter-btn"
+                );
+
+
+            buttons.forEach(btn => {
+
+                btn.classList.remove("active");
+
+            });
+
+
+            button.classList.add("active");
+
+
+            products.forEach(product => {
+
+                const productCategory =
+                    product.dataset.category;
+
+
+                if (
+                    category === "all" ||
+                    productCategory === category
+                ) {
+
+                    product.style.display = "";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        function toggleMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList.toggle("show");
+
+        }
+
+
+        function closeMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList.remove("show");
+
+        }
+
+
+        /* =========================
+           CLOSE MODAL WHEN CLICKING OUTSIDE
+        ========================= */
+
+        document
+            .getElementById("cartModal")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeCart();
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById("checkoutModal")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeCheckout();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================
+           INITIALIZE
+        ========================= */
+
+        updateCart();
+
+    </script>
+
+</body>
+</html>
